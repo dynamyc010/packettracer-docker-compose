@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  run:
+    build: .
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${HOME}/packettracer:/home/cisco/pt
+    environment:
+      - LD_LIBRARY_PATH=/opt/pt/bin
+      - DISPLAY=${HOSTNAME}:0
+    tty: true
+    deploy:
+      resources:
+        limits:
+          memory: 3G
